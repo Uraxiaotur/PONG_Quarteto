@@ -34,12 +34,12 @@ public class UdpServerTwoClients : MonoBehaviour
 
             if (!clientIds.ContainsKey(key))
             {
-                clientIds[key] = Random.Range(1, 5); //Pegar o id e verificar se ele já tá na lista
+                clientIds[key] = Random.Range(0, 4); //Pegar o id e verificar se ele já tá na lista
                 foreach (int idListed in idList)
                 {
                     if (clientIds[key] == idListed)
                     {
-                        clientIds[key] = Random.Range(1, 5);
+                        clientIds[key] = Random.Range(0, 4);
                     }
                 }
 
