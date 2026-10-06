@@ -1657,11 +1657,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7203785d9db8864aab3f042effc0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UDPlayerController
-  players: []
+  players:
+  - {fileID: 484039875}
+  - {fileID: 350338741}
+  - {fileID: 1207681051}
+  - {fileID: 726141812}
+  localCube: {fileID: 0}
   remoteCube1: {fileID: 0}
   remoteCube2: {fileID: 0}
   remoteCube3: {fileID: 0}
-  remoteCube4: {fileID: 0}
   localBall: {fileID: 0}
 --- !u!1 &547779547
 GameObject:
