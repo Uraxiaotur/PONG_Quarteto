@@ -21,7 +21,7 @@ public class UdpClientTwoClients : MonoBehaviour {
 
     void Start() {
         client = new UdpClient();
-        serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.50"), 5001);
+        serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.3"), 5001);
         client.Connect(serverEP);
         receiveThread = new Thread(ReceiveData);
         receiveThread.Start();

@@ -12,7 +12,7 @@ public class UdpServerTwoClients : MonoBehaviour
     IPEndPoint anyEP;
     Thread receiveThread;
     Dictionary<string, int> clientIds = new Dictionary<string, int>();
-    int nextId = 1;
+    int nextId = 0;
     private List<int> idList = new List<int>(4);
 
     void Start()
@@ -34,7 +34,7 @@ public class UdpServerTwoClients : MonoBehaviour
 
             if (!clientIds.ContainsKey(key))
             {
-                clientIds[key] = Random.Range(0, 4); //Pegar o id e verificar se ele já tá na lista
+                clientIds[key] = nextId++; //Pegar o id e verificar se ele já tá na lista
                 foreach (int idListed in idList)
                 {
                     if (clientIds[key] == idListed)

@@ -26,6 +26,7 @@ public class UDPlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        remoteCubes = new GameObject[4];
         client = new UdpClient();
         serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.3"), 5001);
         client.Connect(serverEP);
@@ -39,7 +40,7 @@ public class UDPlayerController : MonoBehaviour
         // Movimento local
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        localCube.transform.Translate(new Vector3(0, v, 0) * (Time.deltaTime * 5));
+        if(localCube) localCube.transform.Translate(new Vector3(0, v, 0) * (Time.deltaTime * 5));
 
         // Envia posição
         string msg = "POS:" +
@@ -57,11 +58,11 @@ public class UDPlayerController : MonoBehaviour
         }
 
         // Atualiza posição dos outros jogadores e bola se o id não for 1
-        remoteCubes[0].transform.position = Vector3.Lerp(remoteCubes[0].transform.position, remotePos[0], Time.deltaTime * 10f);
-        remoteCubes[1].transform.position = Vector3.Lerp(remoteCubes[1].transform.position, remotePos[1], Time.deltaTime * 10f);
-        remoteCubes[2].transform.position = Vector3.Lerp(remoteCubes[2].transform.position, remotePos[2], Time.deltaTime * 10f);
+        if (remoteCubes[0]) remoteCubes[0].transform.position = Vector3.Lerp(remoteCubes[0].transform.position, remotePos[0], Time.deltaTime * 10f);
+        if (remoteCubes[1]) remoteCubes[1].transform.position = Vector3.Lerp(remoteCubes[1].transform.position, remotePos[1], Time.deltaTime * 10f);
+        if (remoteCubes[2]) remoteCubes[2].transform.position = Vector3.Lerp(remoteCubes[2].transform.position, remotePos[2], Time.deltaTime * 10f);
 
-        if (myId != 1)
+        if (myId != 0)
         {
             localBall.transform.position = new Vector3(-ballX, ballY, 0);
         }
