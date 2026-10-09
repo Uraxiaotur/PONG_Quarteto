@@ -26,13 +26,14 @@ public class UDPlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        remoteCubes = new GameObject[3];
         client = new UdpClient();
         serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.111"), 5001);
         client.Connect(serverEP);
         receiveThread = new Thread(ReceiveData);
         receiveThread.Start();
         client.Send(Encoding.UTF8.GetBytes("HELLO"), 5);
+        
+        remoteCubes = players;
     }
 
     void Update()
@@ -53,8 +54,8 @@ public class UDPlayerController : MonoBehaviour
             
 
         // Envia posição
-        string msg = "POS:" +
-                     localCube.transform.position.x.ToString("F2", CultureInfo.InvariantCulture) + ";" +
+        string msg = "POS:" + myId.ToString("F2", CultureInfo.InvariantCulture) + ";" + 
+                     localCube.transform.position.x.ToString("F2", CultureInfo.InvariantCulture) + ";" + 
                      localCube.transform.position.y.ToString("F2", CultureInfo.InvariantCulture);
         client.Send(Encoding.UTF8.GetBytes(msg), msg.Length);
 
@@ -67,10 +68,11 @@ public class UDPlayerController : MonoBehaviour
             client.Send(Encoding.UTF8.GetBytes(msgBall), msgBall.Length);
         }
 
-        // Atualiza posição dos outros jogadores e bola se o id não for 1
+        // Atualiza posição dos outros jogadores, e bola se o id não for 1
         if (remoteCubes[0]) remoteCubes[0].transform.position = Vector3.Lerp(remoteCubes[0].transform.position, remotePos[0], Time.deltaTime * 10f);
         if (remoteCubes[1]) remoteCubes[1].transform.position = Vector3.Lerp(remoteCubes[1].transform.position, remotePos[1], Time.deltaTime * 10f);
         if (remoteCubes[2]) remoteCubes[2].transform.position = Vector3.Lerp(remoteCubes[2].transform.position, remotePos[2], Time.deltaTime * 10f);
+        if (remoteCubes[3]) remoteCubes[3].transform.position = Vector3.Lerp(remoteCubes[3].transform.position, remotePos[3], Time.deltaTime * 10f);
 
         if (myId != 0)
         {
@@ -98,6 +100,7 @@ public class UDPlayerController : MonoBehaviour
                 myId = int.Parse(msg.Substring(7));
                 Debug.Log("[Cliente] Meu ID = " + myId);
                 localCube = players[myId];
+                remoteCubes[myId] = null;
             }
             else if (msg.StartsWith("POS:"))
             {
@@ -111,6 +114,8 @@ public class UDPlayerController : MonoBehaviour
                         float x = float.Parse(parts[1], CultureInfo.InvariantCulture);
                         float y = float.Parse(parts[2], CultureInfo.InvariantCulture);
                         remotePos[id] = new Vector3(x, y, 0);
+                        
+                        Debug.Log($"Player {parts[1]} : {x}, {y}");
                     }
                 }
             }

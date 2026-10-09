@@ -1692,7 +1692,7 @@ MonoBehaviour:
   - {fileID: 726141812}
   localCube: {fileID: 0}
   remoteCubes: []
-  localBall: {fileID: 0}
+  localBall: {fileID: 547779547}
 --- !u!1 &547779547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 686a40f3ee7cec042bc1bee49c6d93a7, type: 2}
+  m_Material: {fileID: 6200000, guid: df738c71bb56a9e478ee96ae10bb28aa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
