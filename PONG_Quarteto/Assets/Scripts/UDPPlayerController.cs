@@ -60,7 +60,7 @@ public class UDPlayerController : MonoBehaviour
         client.Send(Encoding.UTF8.GetBytes(msg), msg.Length);
 
         string msgBall = null;
-        if (localBall && myId == 1)
+        if (localBall && myId == 0)
         {
             msgBall = "BPOS:" +
                       localBall.transform.position.x.ToString("F2", CultureInfo.InvariantCulture) + ";" +
@@ -74,9 +74,13 @@ public class UDPlayerController : MonoBehaviour
         if (remoteCubes[2]) remoteCubes[2].transform.position = Vector3.Lerp(remoteCubes[2].transform.position, remotePos[2], Time.deltaTime * 10f);
         if (remoteCubes[3]) remoteCubes[3].transform.position = Vector3.Lerp(remoteCubes[3].transform.position, remotePos[3], Time.deltaTime * 10f);
 
-        if (myId != 0)
+        if (myId != 0 || myId != 1)
         {
             localBall.transform.position = new Vector3(-ballX, ballY, 0);
+        }
+        else if (myId == 1)
+        {
+            localBall.transform.position = new Vector3(ballX, ballY, 0);
         }
     }
     void ReceiveData()
