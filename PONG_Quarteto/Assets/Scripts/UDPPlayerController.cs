@@ -12,7 +12,7 @@ public class UDPlayerController : MonoBehaviour
     Thread receiveThread;
     IPEndPoint serverEP;
     int myId = -1;
-    Vector3[] remotePos;
+    public Vector3[] remotePos;
 
     private float ballX;
     private float ballY;
@@ -54,7 +54,7 @@ public class UDPlayerController : MonoBehaviour
             
 
         // Envia posição
-        string msg = "POS:" + myId + ";" + 
+        string msg = "POS:" + 
                      localCube.transform.position.x.ToString("F2", CultureInfo.InvariantCulture) + ";" + 
                      localCube.transform.position.y.ToString("F2", CultureInfo.InvariantCulture);
         client.Send(Encoding.UTF8.GetBytes(msg), msg.Length);
@@ -100,7 +100,6 @@ public class UDPlayerController : MonoBehaviour
                 myId = int.Parse(msg.Substring(7));
                 Debug.Log("[Cliente] Meu ID = " + myId);
                 localCube = players[myId];
-                remoteCubes[myId] = null;
             }
             else if (msg.StartsWith("POS:"))
             {
@@ -110,10 +109,11 @@ public class UDPlayerController : MonoBehaviour
                     int id = int.Parse(parts[0]);
                     if (id != myId)
                     {
-                        remoteCubes[int.Parse(parts[0])] = players[int.Parse(parts[0])];
+                        Debug.Log("$Cliente {parts[0]} se conectou ");
                         float x = float.Parse(parts[1], CultureInfo.InvariantCulture);
                         float y = float.Parse(parts[2], CultureInfo.InvariantCulture);
                         remotePos[id] = new Vector3(x, y, 0);
+                        remoteCubes[int.Parse(parts[0])] = players[int.Parse(parts[0])];
                         
                         Debug.Log($"Player {parts[0]} : {x}, {y}");
                     }
