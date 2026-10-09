@@ -71,6 +71,11 @@ public class Ball : MonoBehaviour
             speed += 0.5f;
         }
 
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            rb.AddForce(new Vector2(0, direction.y * -1), ForceMode2D.Impulse);
+        }
+
         if (collision.gameObject.CompareTag("Score1"))
         {
             if (GameManager.Instance.P2Points > 10)

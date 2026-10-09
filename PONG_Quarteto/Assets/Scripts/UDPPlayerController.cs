@@ -73,12 +73,8 @@ public class UDPlayerController : MonoBehaviour
         if (remoteCubes[1]) remoteCubes[1].transform.position = Vector3.Lerp(remoteCubes[1].transform.position, remotePos[1], Time.deltaTime * 10f);
         if (remoteCubes[2]) remoteCubes[2].transform.position = Vector3.Lerp(remoteCubes[2].transform.position, remotePos[2], Time.deltaTime * 10f);
         if (remoteCubes[3]) remoteCubes[3].transform.position = Vector3.Lerp(remoteCubes[3].transform.position, remotePos[3], Time.deltaTime * 10f);
-
-        if (myId != 0 || myId != 1)
-        {
-            localBall.transform.position = new Vector3(-ballX, ballY, 0);
-        }
-        else if (myId == 1)
+        
+        if (myId != 0)
         {
             localBall.transform.position = new Vector3(ballX, ballY, 0);
         }

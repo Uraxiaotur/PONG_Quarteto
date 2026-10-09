@@ -1854,7 +1854,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3720,8 +3720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dc1d4bd71be9940bf11bebf539fd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIPoints
-  P1PointsText: {fileID: 791679796}
-  P2PointsText: {fileID: 57360661}
+  P1PointsText: {fileID: 57360661}
+  P2PointsText: {fileID: 791679796}
 --- !u!1 &1431788843
 GameObject:
   m_ObjectHideFlags: 0
