@@ -918,6 +918,7 @@ GameObject:
   - component: {fileID: 350338742}
   - component: {fileID: 350338744}
   - component: {fileID: 350338745}
+  - component: {fileID: 350338746}
   m_Layer: 0
   m_Name: Pl2
   m_TagString: Player
@@ -1074,6 +1075,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &350338746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350338741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf059cf8425c71046b636a3a6a9b1c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerID
+  playerID: 2
 --- !u!1 &374427548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1471,7 @@ GameObject:
   - component: {fileID: 484039876}
   - component: {fileID: 484039878}
   - component: {fileID: 484039880}
+  - component: {fileID: 484039881}
   m_Layer: 0
   m_Name: Pl1
   m_TagString: Player
@@ -1613,6 +1628,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &484039881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484039875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf059cf8425c71046b636a3a6a9b1c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerID
+  playerID: 1
 --- !u!1 &510394855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,9 +1691,7 @@ MonoBehaviour:
   - {fileID: 1207681051}
   - {fileID: 726141812}
   localCube: {fileID: 0}
-  remoteCube1: {fileID: 0}
-  remoteCube2: {fileID: 0}
-  remoteCube3: {fileID: 0}
+  remoteCubes: []
   localBall: {fileID: 0}
 --- !u!1 &547779547
 GameObject:
@@ -2045,6 +2071,7 @@ GameObject:
   - component: {fileID: 726141815}
   - component: {fileID: 726141814}
   - component: {fileID: 726141813}
+  - component: {fileID: 726141817}
   m_Layer: 0
   m_Name: Pl4
   m_TagString: Player
@@ -2201,6 +2228,19 @@ Transform:
   - {fileID: 1431788844}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726141817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726141812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf059cf8425c71046b636a3a6a9b1c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerID
+  playerID: 4
 --- !u!1 &728033178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,6 +3191,7 @@ GameObject:
   - component: {fileID: 1207681054}
   - component: {fileID: 1207681053}
   - component: {fileID: 1207681052}
+  - component: {fileID: 1207681056}
   m_Layer: 0
   m_Name: Pl3
   m_TagString: Player
@@ -3307,6 +3348,19 @@ Transform:
   - {fileID: 3253180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207681056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207681051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf059cf8425c71046b636a3a6a9b1c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerID
+  playerID: 3
 --- !u!1 &1225415399
 GameObject:
   m_ObjectHideFlags: 0

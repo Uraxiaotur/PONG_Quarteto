@@ -91,4 +91,10 @@ public class UdpServerTwoClients : MonoBehaviour
             }
         }
     }
+    
+    void OnApplicationQuit()
+    {
+        receiveThread.Abort();
+        server.Close();
+    }
 }

@@ -26,9 +26,9 @@ public class UDPlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        remoteCubes = new GameObject[4];
+        remoteCubes = new GameObject[3];
         client = new UdpClient();
-        serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.3"), 5001);
+        serverEP = new IPEndPoint(IPAddress.Parse("10.57.1.111"), 5001);
         client.Connect(serverEP);
         receiveThread = new Thread(ReceiveData);
         receiveThread.Start();
@@ -40,7 +40,17 @@ public class UDPlayerController : MonoBehaviour
         // Movimento local
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        if(localCube) localCube.transform.Translate(new Vector3(0, v, 0) * (Time.deltaTime * 5));
+        if(localCube)
+        {
+            localCube.transform.Translate(new Vector3(0, v, 0) * (Time.deltaTime * 5));
+        }
+
+        if (localCube)
+        {
+            SpriteRenderer sr = localCube.GetComponent<SpriteRenderer>();
+            sr.color = Color.white;
+        }
+            
 
         // Envia posição
         string msg = "POS:" +
