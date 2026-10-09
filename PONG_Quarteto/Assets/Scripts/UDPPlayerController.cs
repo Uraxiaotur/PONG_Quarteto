@@ -33,7 +33,7 @@ public class UDPlayerController : MonoBehaviour
         receiveThread.Start();
         client.Send(Encoding.UTF8.GetBytes("HELLO"), 5);
         
-        remoteCubes = players;
+        remotePos = new Vector3[4];
     }
 
     void Update()
@@ -54,7 +54,7 @@ public class UDPlayerController : MonoBehaviour
             
 
         // Envia posição
-        string msg = "POS:" + myId.ToString("F2", CultureInfo.InvariantCulture) + ";" + 
+        string msg = "POS:" + myId + ";" + 
                      localCube.transform.position.x.ToString("F2", CultureInfo.InvariantCulture) + ";" + 
                      localCube.transform.position.y.ToString("F2", CultureInfo.InvariantCulture);
         client.Send(Encoding.UTF8.GetBytes(msg), msg.Length);
@@ -88,7 +88,7 @@ public class UDPlayerController : MonoBehaviour
             byte[] data = client.Receive(ref remoteEP);
             string msg = Encoding.UTF8.GetString(data);
 
-            if (msg.StartsWith("BPOS:") && myId != 1)
+            if (msg.StartsWith("BPOS:") && myId != 0)
             {
                 string[] parts = msg.Substring(5).Split(';');
                 ballX = float.Parse(parts[0], CultureInfo.InvariantCulture);
@@ -110,12 +110,12 @@ public class UDPlayerController : MonoBehaviour
                     int id = int.Parse(parts[0]);
                     if (id != myId)
                     {
-                        remoteCubes[id] = players[id];
+                        remoteCubes[int.Parse(parts[0])] = players[int.Parse(parts[0])];
                         float x = float.Parse(parts[1], CultureInfo.InvariantCulture);
                         float y = float.Parse(parts[2], CultureInfo.InvariantCulture);
                         remotePos[id] = new Vector3(x, y, 0);
                         
-                        Debug.Log($"Player {parts[1]} : {x}, {y}");
+                        Debug.Log($"Player {parts[0]} : {x}, {y}");
                     }
                 }
             }

@@ -52,6 +52,7 @@ public class UdpServerTwoClients : MonoBehaviour
             {
                 string coords = msg.Substring(4);
                 string broadcast = $"POS:{id};{coords}";
+                Debug.Log(broadcast);
                 byte[] bdata = Encoding.UTF8.GetBytes(broadcast);
 
                 foreach (var kvp in clientIds)
